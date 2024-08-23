@@ -1,0 +1,20 @@
+{
+  "name": "economybot",
+  "version": "1.0.0",
+  "description": "a discord economy bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "97st",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.4.3",
+    "parse-ms-2": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.5.0"
+  }
+}
