@@ -17,25 +17,20 @@ module.exports = {
         if (timeLeft > 0) {
             await interaction.deferReply({ ephemeral: true });
             const { hours, minutes, seconds } = parseMilliseconds(timeLeft);
-            await interaction.editReply(`Claim your next daily in ${hours} hrs ${minutes} min ${seconds} sec`
-
-            );
+            await interaction.editReply(`Claim your next daily in ${hours} hrs ${minutes} min ${seconds} sec`);
+            return;
         }
 
         await interaction.deferReply();
 
-        const randomAmt = Math.floor(Math.random() * (dailyMax - dailyMin + 1) + dailyMin
-        );
+        const randomAmt = Math.floor(Math.random() * (dailyMax - dailyMin + 1) + dailyMin);
 
         try {
             await profileModel.findOneAndUpdate(
+                { userID: id }, // Ensure the update is applied to the correct user
                 {
-                    $set: {
-                        dailyLastUsed: Date.now(),
-                    },
-                    $inc: {
-                        balance: randomAmt,
-                    },
+                    $set: { dailyLastUsed: Date.now() },
+                    $inc: { balance: randomAmt },
                 }
             );
         } catch (error) {
