@@ -29,8 +29,8 @@ module.exports = {
     }
 
     let amount = Math.floor(Math.random() * 10) + 1; // 1-10% amount of money
-    let amount_val = Math.floor(userData.balance * (amount / 10));
-    console.log(amount, amount_val);
+    let amount_val = Math.floor(userData.balance * (amount / 100));
+
     try {
       await profileModel.findOneAndUpdate(
         { userID: id }, // Ensure the update is applied to the correct user
