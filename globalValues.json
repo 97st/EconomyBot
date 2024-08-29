@@ -1,5 +1,6 @@
 {
-    "dailyMin": 1,
-    "dailyMax": 10,
-    "coinFlipReward": 10
+  "dailyMin": 1,
+  "dailyMax": 10,
+  "coinFlipReward": 10,
+  "blackjackReward": 2
 }

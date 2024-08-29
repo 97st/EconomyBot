@@ -9,9 +9,11 @@
   "author": "97st",
   "license": "ISC",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.54",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "mongoose": "^8.4.3",
+    "napi-rs-canvas-twemoji": "github:axissware/napi-rs-canvas-twemoji",
     "parse-ms-2": "^1.0.0"
   },
   "devDependencies": {
