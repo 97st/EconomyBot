@@ -14,7 +14,7 @@ module.exports = {
     const { id } = interaction.user;
 
     const cooldown = 86400000;
-    const timeLeft = cooldown - (Date.now() - dailyLastUsed);
+    const timeLeft = cooldown - (Date.now() - fishLastUsed);
 
     if (timeLeft > 0) {
             await interaction.deferReply({ ephemeral: true });
