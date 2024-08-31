@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema({
   coinFlipLastUsed: { type: Number, default: 0 },
   rouletteLastUsed: { type: Number, default: 0 },
   spinLastUsed: { type: Number, default: 0 },
+  fishLastUsed: { type: Number, default: 0 },
 });
 
 const model = mongoose.model("ecodb", profileSchema);
