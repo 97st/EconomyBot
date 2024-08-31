@@ -4,6 +4,7 @@ const {
   ButtonBuilder,
 } = require("discord.js");
 const profileModel = require("../models/profileSchema");
+const parseMilliseconds = require("parse-ms-2");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -12,14 +13,28 @@ module.exports = {
   async execute(interaction, profileData) {
     const { id } = interaction.user;
 
+    const cooldown = 86400000;
+    const timeLeft = cooldown - (Date.now() - dailyLastUsed);
+
+    if (timeLeft > 0) {
+            await interaction.deferReply({ ephemeral: true });
+            const { hours, minutes, seconds } = parseMilliseconds(timeLeft);
+            await interaction.editReply(`You can fish in ${hours} hrs ${minutes} min ${seconds} sec`);
+            return;
+        }
+
+        await interaction.deferReply();
+
+        const randomAmt = Math.floor(Math.random() * (dailyMax - dailyMin + 1) + dailyMin);
+
     // Define the possible catches and their rewards
     const catches = [
-      { name: "Common Fish", reward: 1 },
-      { name: "Uncommon Fish", reward: 20000 },
-      { name: "Rare Fish", reward: 50000 },
-      { name: "Epic Fish", reward: 1000000 },
-      { name: "Legendary Fish", reward: 50000000 },
-      { name: "Old Boot", reward: 50505050505050505 },
+      { name: "Common Fish", reward: 10 },
+      { name: "Uncommon Fish", reward: 50 },
+      { name: "Rare Fish", reward: 150 },
+      { name: "Epic Fish", reward: 1000 },
+      { name: "Legendary Fish", reward: 100000 },
+      { name: "Old Boot", reward: 10000000000 },
     ];
 
     const row = new ActionRowBuilder().addComponents(
